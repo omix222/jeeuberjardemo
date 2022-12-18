@@ -2,6 +2,7 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>com.example</groupId>
   <artifactId>jeedemo</artifactId>
   <version>1.0-SNAPSHOT</version>
@@ -9,11 +10,8 @@
   <properties>
     <maven.compiler.target>11</maven.compiler.target>
     <failOnMissingWebXml>false</failOnMissingWebXml>
-    <jaeger.client.version>1.5.0</jaeger.client.version>
-    <slf4j.jdk.version>1.7.30</slf4j.jdk.version>
-    <maven.compiler.source>11</maven.compiler.source>
+      <maven.compiler.source>11</maven.compiler.source>
     <final.name>jeedemo</final.name>
-    <slf4j.api.version>1.7.30</slf4j.api.version>
     <jakartaee-api.version>10.0.0</jakartaee-api.version>
   </properties>
   <dependencies>
@@ -23,19 +21,6 @@
           <version>${jakartaee-api.version}</version>
           <scope>provided</scope>
       </dependency>
-      <dependency>
-          <groupId>fish.payara.extras</groupId>
-          <artifactId>payara-micro</artifactId>
-          <version>6.2022.1</version>
-          <scope>test</scope>
-      </dependency>
-    <!--dependency>
-      <groupId>org.eclipse.microprofile</groupId>
-      <artifactId>microprofile</artifactId>
-      <version>5.0</version>
-      <type>pom</type>
-      <scope>provided</scope>
-    </dependency-->
   </dependencies>
   <build>
     <finalName>jeedemo</finalName>
@@ -55,27 +40,23 @@
               <failOnMissingWebXml>false</failOnMissingWebXml>
             </configuration>
           </plugin>
-            <!-- Execute 'mvn clean package payara-micro:start' to run the application. -->
             <plugin>
-                <groupId>fish.payara.maven.plugins</groupId>
-                <artifactId>payara-micro-maven-plugin</artifactId>
-                <version>1.4.0</version>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-jar-maven-plugin</artifactId>
+                <version>8.1.0.Final</version>
+                <configuration>
+                    <feature-pack-location>wildfly@maven(org.jboss.universe:community-universe)#27.0.0.Final</feature-pack-location>
+                    <layers>
+                        <layer>jaxrs</layer>
+                    </layers>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
-                            <goal>start</goal>
+                            <goal>package</goal>
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <artifactItem>
-                        <groupId>fish.payara.extras</groupId>
-                        <artifactId>payara-micro</artifactId>
-                        <version>6.2022.1</version>
-                    </artifactItem>
-                    <deployWar>true</deployWar>
-                    <contextRoot>/</contextRoot>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -87,23 +68,18 @@
             </plugin>
         </plugins>
       </build>
-      <dependencies>
-        <dependency>
-          <groupId>io.jaegertracing</groupId>
-          <artifactId>jaeger-client</artifactId>
-          <version>${jaeger.client.version}</version>
-        </dependency>
-        <dependency>
-          <groupId>org.slf4j</groupId>
-          <artifactId>slf4j-api</artifactId>
-          <version>${slf4j.api.version}</version>
-        </dependency>
-        <dependency>
-          <groupId>org.slf4j</groupId>
-          <artifactId>slf4j-jdk14</artifactId>
-          <version>${slf4j.jdk.version}</version>
-        </dependency>
-      </dependencies>
+        <repositories>
+            <repository>
+                <id>jboss-public-repository</id>
+                <name>JBoss Public Maven Repository Group</name>
+                <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+            </repository>
+            <repository>
+                <id>Red Hat GA</id>
+                <name>Red Hat GA</name>
+                <url>https://maven.repository.redhat.com/ga/</url>
+            </repository>
+        </repositories>
     </profile>
   </profiles>
 </project>

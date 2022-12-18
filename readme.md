@@ -1,4 +1,4 @@
-# Jakarta EE 10 Application(Payara Micro)
+# Jakarta EE 10 Application(Wildfly 27.0.0.Final)
 
 ## Introduction
 

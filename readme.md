@@ -7,7 +7,7 @@ Build & Deploy command,
    ``mvn package``
 
    `` java -jar target/jeedemo-bootable.jar``
-s
+
 
 To launch the test page, open your browser at the following URL
 

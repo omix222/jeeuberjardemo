@@ -1,11 +1,13 @@
-# Jakarta EE 10 Application(Wildfly 27.0.0.Final)
+# Jakarta EE 10 Application(Wildfly 27.0.1.Final)
 
 ## Introduction
 
 Build & Deploy command,
 
-   ``mvn clean package payara-micro:start``
+   ``mvn package``
 
+   `` java -jar target/jeedemo-bootable.jar``
+s
 
 To launch the test page, open your browser at the following URL
 

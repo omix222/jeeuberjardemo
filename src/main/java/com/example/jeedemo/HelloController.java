@@ -5,7 +5,7 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 
 /**
- *
+ * A simple REST controller.
  */
 @Path("/hello")
 @Singleton

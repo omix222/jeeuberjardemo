@@ -8,7 +8,7 @@ A minimal **Jakarta EE 10** demonstration application that exposes a single JAX-
 
 - **Language**: Java 11
 - **Framework**: Jakarta EE 10 (JAX-RS, CDI)
-- **Application Server**: WildFly 27.0.1.Final (embedded bootable JAR)
+- **Application Server**: WildFly 39.0.1.Final (embedded bootable JAR)
 - **Build Tool**: Maven
 - **Packaging**: WAR → Bootable JAR
 
@@ -64,7 +64,7 @@ Single JAX-RS resource annotated with `@Path("/hello")` and `@Singleton`. The `s
 The `pom.xml` defines a single Maven profile named `liberty` (active by default) that:
 
 1. **`maven-war-plugin:3.3.2`** — packages the application as a WAR without requiring `web.xml`.
-2. **`wildfly-jar-maven-plugin:8.1.0.Final`** — produces `target/jeedemo-bootable.jar` with the `jaxrs` Galleon layer from WildFly 27.0.1.Final.
+2. **`wildfly-jar-maven-plugin:12.0.0.Final`** — produces `target/jeedemo-bootable.jar` with the `jaxrs` Galleon layer from WildFly 39.0.1.Final.
 3. **`maven-compiler-plugin`** — compiles with Java source/target 11.
 4. **`git-commit-id-maven-plugin:5.0.0`** — embeds git metadata (`git.properties`) into the build artifact.
 

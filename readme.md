@@ -1,4 +1,4 @@
-# Jakarta EE 10 Application(Wildfly 39.0.1.Final)
+# Jakarta EE 11 Application(Wildfly 39.0.1.Final)
 
 ## Introduction
 

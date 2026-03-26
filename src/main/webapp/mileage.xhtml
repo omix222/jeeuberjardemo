@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <title>マイル ↔ km 変換</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; }
+        table { border-collapse: collapse; }
+        td { padding: 8px 12px; }
+        .result { margin-top: 20px; font-size: 1.2em; font-weight: bold; color: #2a6496; }
+        .btn { padding: 6px 16px; margin-right: 8px; cursor: pointer; }
+        input[type=text] { padding: 6px; font-size: 1em; width: 160px; }
+        a { color: #555; font-size: 0.9em; }
+    </style>
+</h:head>
+<h:body>
+    <h2>マイル ↔ キロメートル 変換</h2>
+
+    <h:form>
+        <table>
+            <tr>
+                <td><h:outputLabel for="km" value="キロメートル (km)" /></td>
+                <td><h:inputText id="km" value="#{mileageBean.kilometers}" /></td>
+                <td><h:commandButton value="km → マイル" action="#{mileageBean.kmToMiles}" styleClass="btn" /></td>
+            </tr>
+            <tr>
+                <td><h:outputLabel for="mi" value="マイル (miles)" /></td>
+                <td><h:inputText id="mi" value="#{mileageBean.miles}" /></td>
+                <td><h:commandButton value="マイル → km" action="#{mileageBean.milesToKm}" styleClass="btn" /></td>
+            </tr>
+        </table>
+
+        <h:panelGroup rendered="#{not empty mileageBean.resultMessage}">
+            <p class="result">#{mileageBean.resultMessage}</p>
+        </h:panelGroup>
+    </h:form>
+
+    <hr/>
+    <a href="index.html">← トップへ戻る</a>
+</h:body>
+</html>

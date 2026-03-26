@@ -49,6 +49,7 @@
                     <feature-pack-location>wildfly@maven(org.jboss.universe:community-universe)#39.0.1.Final</feature-pack-location>
                     <layers>
                         <layer>jaxrs</layer>
+                        <layer>jsf</layer>
                     </layers>
                 </configuration>
                 <executions>

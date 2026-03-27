@@ -15,11 +15,36 @@
     <jakartaee-api.version>11.0.0</jakartaee-api.version>
   </properties>
   <dependencies>
+      <!-- Jakarta EE 11 APIs (provided by WildFly at runtime) -->
       <dependency>
-          <groupId>jakarta.platform</groupId>
-          <artifactId>jakarta.jakartaee-api</artifactId>
-          <version>${jakartaee-api.version}</version>
+          <groupId>jakarta.ws.rs</groupId>
+          <artifactId>jakarta.ws.rs-api</artifactId>
+          <version>4.0.0</version>
           <scope>provided</scope>
+      </dependency>
+      <dependency>
+          <groupId>jakarta.enterprise</groupId>
+          <artifactId>jakarta.enterprise.cdi-api</artifactId>
+          <version>4.0.1</version>
+          <scope>provided</scope>
+      </dependency>
+      <dependency>
+          <groupId>jakarta.inject</groupId>
+          <artifactId>jakarta.inject-api</artifactId>
+          <version>2.0.1</version>
+          <scope>provided</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.junit.jupiter</groupId>
+          <artifactId>junit-jupiter</artifactId>
+          <version>5.11.3</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>com.microsoft.playwright</groupId>
+          <artifactId>playwright</artifactId>
+          <version>1.56.0</version>
+          <scope>test</scope>
       </dependency>
   </dependencies>
   <build>
@@ -66,6 +91,16 @@
                 <configuration>
                     <source>21</source>
                     <target>21</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.2</version>
+                <configuration>
+                    <environmentVariables>
+                        <PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD>1</PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD>
+                    </environmentVariables>
                 </configuration>
             </plugin>
               <plugin>

@@ -26,7 +26,7 @@ public class MileageBean {
     public void milesToKm() {
         if (miles != null && miles >= 0) {
             kilometers = miles * 1.60934;
-            resultMessage = String.format("%.4f マイル  =  %.3f km", miles, kilometers);
+            resultMessage = String.format("%.4f マイル  =  %.5f km", miles, kilometers);
         } else {
             resultMessage = "マイルを入力してください。";
         }
